@@ -17,7 +17,11 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>ClawBot</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>assets/icone.png</normaloff>assets/icone.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="maximumSize">
@@ -379,7 +383,7 @@ background-color:  qlineargradient(spread:pad, x1:0.517, y1:0, x2:0.517, y2:1, s
         <property name="minimumSize">
          <size>
           <width>200</width>
-          <height>100</height>
+          <height>119</height>
          </size>
         </property>
         <property name="font">
@@ -400,7 +404,7 @@ background-color:  qlineargradient(spread:pad, x1:0.517, y1:0, x2:0.517, y2:1, s
          <item>
           <layout class="QVBoxLayout" name="verticalLayout_3">
            <item>
-            <widget class="QRadioButton" name="radioButton_red">
+            <widget class="QRadioButton" name="radioButton_blue">
              <property name="font">
               <font>
                <family>Calibri</family>
@@ -440,7 +444,7 @@ QRadioButton::indicator:hover, QCheckBox::indicator:hover
 }</string>
              </property>
              <property name="text">
-              <string>Red</string>
+              <string>Blue</string>
              </property>
             </widget>
            </item>
@@ -531,6 +535,51 @@ QRadioButton::indicator:hover, QCheckBox::indicator:hover
              </property>
              <property name="text">
               <string>Green</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton_red">
+             <property name="font">
+              <font>
+               <family>Calibri</family>
+               <pointsize>9</pointsize>
+               <weight>75</weight>
+               <italic>false</italic>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QRadioButton::indicator:checked, QRadioButton::indicator:unchecked{
+    color: #b1b1b1;
+    background-color: #323232;
+    border: 1px solid #b1b1b1;
+    border-radius: 6px;
+}
+
+QRadioButton::indicator:checked
+{
+    background-color: qradialgradient(
+        cx: 0.5, cy: 0.5,
+        fx: 0.5, fy: 0.5,
+        radius: 1.0,
+        stop: 0.25 #ffaa00,
+        stop: 0.3 #323232
+    );
+}
+
+QRadioButton::indicator
+{
+    border-radius: 6px;
+}
+
+QRadioButton::indicator:hover, QCheckBox::indicator:hover
+{
+    border: 1px solid #ffaa00;
+}</string>
+             </property>
+             <property name="text">
+              <string>Red</string>
              </property>
             </widget>
            </item>
