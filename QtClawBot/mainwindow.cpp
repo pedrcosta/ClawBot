@@ -29,8 +29,8 @@ void MainWindow::exitProgram()
 
 void MainWindow::init_Camera()
 {
-    //capWebcam.open(0); //Open the webcam MICROSOFT LIFECAM VX-1000 V1.0
-    capWebcam.open(1); //Open the webcam PS3 EYE
+    capWebcam.open(0); //Open the webcam MICROSOFT LIFECAM VX-1000 V1.0
+    //capWebcam.open(1); //Open the webcam PS3 EYE
 
     if(!capWebcam.isOpened()) //If unsuccessful
     {
