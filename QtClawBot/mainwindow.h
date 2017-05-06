@@ -4,9 +4,13 @@
 #include <QMainWindow>
 
 #include<QtCore>
+#include<QtCore/QDebug>
 #include<QMessageBox>
 
 #include <QTime>
+
+#include <QtSerialPort/QSerialPort>
+#include <QtSerialPort/QSerialPortInfo>
 
 #include<opencv2/core/core.hpp>
 #include<opencv2/highgui/highgui.hpp>
@@ -35,6 +39,10 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+
+
+    void bluetooth();
+    QStringList LoadPorts();
 
 
     void exitProgram();

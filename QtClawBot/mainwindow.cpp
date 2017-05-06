@@ -7,6 +7,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    bluetooth();
+
     init_Camera();
 }
 
@@ -20,6 +22,46 @@ void MainWindow::on_pushButton_pick_clicked()
 
 }
 
+void MainWindow::bluetooth()
+{
+    QStringList portSerial;
+    int myPortSerial;
+    portSerial = LoadPorts();
+    uint numPortSerial = portSerial.size();
+
+    qDebug() << "INDICE" << "\t\tDISPOSITIVO" << endl;
+    if (numPortSerial > 0) {
+        for(uint indice=0; indice<numPortSerial; indice++) {
+            qDebug() << "[" << indice << "]\t\t" << portSerial.value(indice);
+        }
+    }
+    else {
+        qDebug() << "Nenhuma porta serial detectada!\n";
+        exit(1);
+    }
+}
+
+QStringList MainWindow::LoadPorts()
+{
+    QStringList device;
+
+    foreach (const QSerialPortInfo &devinfo, QSerialPortInfo::availablePorts()) {
+
+        QSerialPort devserial;
+        devserial.setPort(devinfo);
+
+        if (devserial.open(QIODevice::ReadWrite)) {
+            qDebug() << "\nPorta\t:" << devinfo.portName();
+            qDebug() << "Descrição\t:" << devinfo.description();
+            qDebug() << "Fabricante\t:" << devinfo.manufacturer() << "\n";
+            device << devinfo.portName();
+            devserial.close();
+        }
+    }
+    return device;
+
+}
+
 void MainWindow::exitProgram()
 {
     if(qtimer->isActive())
@@ -29,8 +71,8 @@ void MainWindow::exitProgram()
 
 void MainWindow::init_Camera()
 {
-    //capWebcam.open(0); //Open the webcam MICROSOFT LIFECAM VX-1000 V1.0
-    capWebcam.open(1); //Open the webcam PS3 EYE
+    capWebcam.open(0); //Open the webcam MICROSOFT LIFECAM VX-1000 V1.0
+    //capWebcam.open(1); //Open the webcam PS3 EYE
 
     if(!capWebcam.isOpened()) //If unsuccessful
     {
