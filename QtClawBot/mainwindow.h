@@ -7,10 +7,13 @@
 #include<QtCore/QDebug>
 #include<QMessageBox>
 
+#include <QtSerialPort/QSerialPort>
+
 #include <QTime>
 
 #include <QtSerialPort/QSerialPort>
 #include <QtSerialPort/QSerialPortInfo>
+
 
 #include<opencv2/core/core.hpp>
 #include<opencv2/highgui/highgui.hpp>
@@ -35,14 +38,24 @@ public:
 
 
 private slots:
+    void init_serial();
+    void serial_idCheck();
     void on_pushButton_pick_clicked();
+    void myReadData();
+    void on_pushButton_start_activity_clicked();
+
+    void on_pushButton_stop_activity_clicked();
+
 
 private:
     Ui::MainWindow *ui;
 
+    QSerialPort *serial;
+    static const quint16 arduino_vendor_id = 9025;      //Arduino Mega vendor = 9025   Arduino Nano vendor = 6790
+    static const quint16 arduino_product_id = 16;       //Arduino Mega product =16     Arduino Nano product = 29987
 
-    void bluetooth();
-    QStringList LoadPorts();
+    //void bluetooth();
+    //QStringList LoadPorts();
 
 
     void exitProgram();
